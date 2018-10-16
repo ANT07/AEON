@@ -17,7 +17,7 @@ public class Producto  implements java.io.Serializable {
      private Float existencia;
      private String descripcion;
      private Integer estadoproducto;
-     private Set detalleVentas = new HashSet(0);
+     private double precio; 
 
     public Producto() {
     }
@@ -26,15 +26,7 @@ public class Producto  implements java.io.Serializable {
     public Producto(int idproducto) {
         this.idproducto = idproducto;
     }
-    public Producto(int idproducto, Integer idcategoria, String nombreproducto, Float existencia, String descripcion, Integer estadoproducto, Set detalleVentas) {
-       this.idproducto = idproducto;
-       this.idcategoria = idcategoria;
-       this.nombreproducto = nombreproducto;
-       this.existencia = existencia;
-       this.descripcion = descripcion;
-       this.estadoproducto = estadoproducto;
-       this.detalleVentas = detalleVentas;
-    }
+
    
     public int getIdproducto() {
         return this.idproducto;
@@ -78,15 +70,14 @@ public class Producto  implements java.io.Serializable {
     public void setEstadoproducto(Integer estadoproducto) {
         this.estadoproducto = estadoproducto;
     }
-    public Set getDetalleVentas() {
-        return this.detalleVentas;
-    }
-    
-    public void setDetalleVentas(Set detalleVentas) {
-        this.detalleVentas = detalleVentas;
+
+    public double getPrecio() {
+        return precio;
     }
 
-
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
 
 }

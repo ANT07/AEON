@@ -7,12 +7,13 @@
             ${producto.nombreproducto}
         </div>
         <div class="panel-body">
-            <form>
-                <input type="hidden" name="porductoId" value="${producto.idproducto}">
+            <form id="carrito${producto.idproducto}" action="anadircarrito.do" method="post">
+                <input type="hidden" name="accion" value="agregar">
+                <input type="hidden" name="productoId" value="${producto.idproducto}">
                 <label class="label label-default">${producto.nombreproducto}</label>
             </form>
             <div style="margin-top: 10px;">
-                <button class="btn btn-sm btn-primary " onclick="cambiarContenido(this)"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+                <button class="btn btn-sm btn-primary " onclick="cambiarContenido(this,'${producto.idproducto}')"><span class="glyphicon glyphicon-shopping-cart"></span></button>
             </div>
         </div> 
     </div>

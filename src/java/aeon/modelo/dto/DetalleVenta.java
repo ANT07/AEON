@@ -10,11 +10,12 @@ public class DetalleVenta  implements java.io.Serializable {
 
 
      private int iddetalle;
-     private Producto producto;
-     private Venta venta;
-     private Float cantidad;
-     private Float precio;
-     private Float totaldetalle;
+     private int producto;
+     private int venta;
+     private double cantidad;
+     private double precio;
+     private double totaldetalle;
+     private String nombreProducto ;
 
     public DetalleVenta() {
     }
@@ -22,14 +23,6 @@ public class DetalleVenta  implements java.io.Serializable {
 	
     public DetalleVenta(int iddetalle) {
         this.iddetalle = iddetalle;
-    }
-    public DetalleVenta(int iddetalle, Producto producto, Venta venta, Float cantidad, Float precio, Float totaldetalle) {
-       this.iddetalle = iddetalle;
-       this.producto = producto;
-       this.venta = venta;
-       this.cantidad = cantidad;
-       this.precio = precio;
-       this.totaldetalle = totaldetalle;
     }
    
     public int getIddetalle() {
@@ -39,40 +32,78 @@ public class DetalleVenta  implements java.io.Serializable {
     public void setIddetalle(int iddetalle) {
         this.iddetalle = iddetalle;
     }
-    public Producto getProducto() {
-        return this.producto;
-    }
-    
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-    public Venta getVenta() {
-        return this.venta;
-    }
-    
-    public void setVenta(Venta venta) {
-        this.venta = venta;
-    }
-    public Float getCantidad() {
+
+    public double getCantidad() {
         return this.cantidad;
     }
     
-    public void setCantidad(Float cantidad) {
+    public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    public Float getPrecio() {
+    public double getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(Float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
-    public Float getTotaldetalle() {
+    public double getTotaldetalle() {
         return this.totaldetalle;
     }
     
-    public void setTotaldetalle(Float totaldetalle) {
+    public void setTotaldetalle(double totaldetalle) {
         this.totaldetalle = totaldetalle;
+    }
+
+    public int getProducto() {
+        return producto;
+    }
+
+    public void setProducto(int producto) {
+        this.producto = producto;
+    }
+
+    public int getVenta() {
+        return venta;
+    }
+
+    public void setVenta(int venta) {
+        this.venta = venta;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.producto;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetalleVenta other = (DetalleVenta) obj;
+        if (this.producto != other.producto) {
+            return false;
+        }
+        this.setCantidad(this.cantidad + other.getCantidad());
+        this.setTotaldetalle(this.cantidad* this.getPrecio());
+        return true;
     }
 
 
