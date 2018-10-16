@@ -24,6 +24,7 @@
                 vertical-align: middle !important;
             }
         </style>
+        <%@include file="WEB-INF/jspf/NavBar.jspf"%>
         <%
             ServiciosRoll serviciosRoll = new ServiciosRoll();
             List<Roll> rolles = serviciosRoll.ObtenerRolls();
@@ -32,6 +33,7 @@
                     rolles);
 
         %>
+
         <div class="container">
 
             <div class="row">
@@ -48,7 +50,7 @@
                                     <input name="tipo" id="tipoRoll" value="guardar" type="hidden">
                                     <input name="rollId" id="rollId" type="hidden" value="0">
                                     <div class="form-group">
-                                            <label>Nombre Roll: </label>
+                                        <label>Nombre Roll: </label>
                                         <input name="nombreRoll" id="nombreRoll" type="text" class="form-control">
                                     </div>
                                 </form>
@@ -91,15 +93,15 @@
                                                     <table class="table table-hover table-condensed">
                                                         <tbody>
                                                         <form action="opciones.do" method="post">
-                                                        <% 
-                                                            int rollId = (int)request.getAttribute(
-                                                                    "rollId");
-                                                            ServiciosRollSubmenu serviciosSubMenu = new ServiciosRollSubmenu();
-                                                            List<RollSubmenu> rollSubMenus = serviciosSubMenu.ObtenerRollSubmenuByRoll(rollId);
-                                                            pageContext.setAttribute(
+                                                            <%                                                            int rollId = (int) request.getAttribute(
+                                                                        "rollId");
+                                                                ServiciosRollSubmenu serviciosRollSubmenu = new ServiciosRollSubmenu();
+                                                                List<RollSubmenu> rollSubMenus = serviciosRollSubmenu.ObtenerRollSubmenuByRoll(
+                                                                        rollId);
+                                                                pageContext.setAttribute(
                                                                         "rollSubMenus",
                                                                         rollSubMenus);
-                                                            
+
                                                             %>
                                                             <c:forEach items="${rollSubMenus}" var="rollSubMenu">
                                                                 <tr>

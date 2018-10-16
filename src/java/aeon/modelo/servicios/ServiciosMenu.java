@@ -109,7 +109,7 @@ public class ServiciosMenu {
         List<Menu> menus = new ArrayList<>();
         try {
             conexion = new Conexion();
-            String sql = "SELECT * FROM menu m, sub_menu sm, roll r , roll_submenu rs WHERE \n"
+            String sql = "SELECT DISTINCT m.MENU_ID,m.MENU_NAME FROM menu m, sub_menu sm, roll r , roll_submenu rs WHERE \n"
                     + "m.MENU_ID = sm.MENU_ID and \n"
                     + "sm.SUMMENU_ID = rs.SUMMENU_ID AND\n"
                     + "r.ROLL_ID = rs.ROLL_ID AND\n"

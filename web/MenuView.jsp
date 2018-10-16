@@ -15,18 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="crossorigin="anonymous"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <script src="${pageContext.request.contextPath}/Javascript/javascript.js"></script>
         <style>
             td{
                 vertical-align: middle !important;
@@ -34,15 +23,15 @@
         </style>
     </head>
     <body>
-
+        <%@include file="WEB-INF/jspf/NavBar.jspf"%>
         <%
-            ServiciosMenu serviciosMenu = new ServiciosMenu();
             List<Menu> menusTabla = serviciosMenu.ObtenerMenus();
             pageContext.setAttribute("menus",
                     menusTabla);
 
 
         %>
+
 
         <div class="row">
             <!-- Modal -->
@@ -135,7 +124,6 @@
                                                         <% 
                                                             int menuId = (int)request.getAttribute(
                                                                     "menuId");
-                                                            ServiciosSubMenu serviciosSubMenu = new ServiciosSubMenu();
                                                             List<SubMenu> submenus = serviciosSubMenu.ObtenerSubMenusByMenu(menuId);
                                                             pageContext.setAttribute(
                                                                         "submenus",

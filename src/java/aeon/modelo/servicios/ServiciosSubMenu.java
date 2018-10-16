@@ -186,7 +186,7 @@ public class ServiciosSubMenu {
                     sql);
             consulta.setInt(1,
                     idMenu);
-            consulta.setInt(1,
+            consulta.setInt(2,
                     idRoll);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {

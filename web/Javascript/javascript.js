@@ -94,41 +94,8 @@ function cambiarTipo(){
     tipo.value = "guardar"; 
 }
 
-//function habilitarSelect(){       
-//    var providerIdSelect = document.getElementById("providerid");
-//    providerIdSelect.disabled = false; 
-//}
 
-//function habilitarText(){       
-//    var productIdText = document.getElementById("produtcid");
-//    productIdText.readOnly = false; 
-//}
 
-function abrirDialogoContact(contactid,providerid,contactname,contactstate,contactphone){
-        var tipo = document.getElementById("tipo");
-        tipo.value = "editar";
-        
-        var providerIdSelect = document.getElementById("providerid");
-        var providerIdHidden = document.getElementById("providerId");
-        var contactIdHidden = document.getElementById("contactid");
-        var contactNameText = document.getElementById("contactname");
-        var contactPhoneText = document.getElementById("contactphone");
-        var contactStateCheck = document.getElementById("contactstate");
-        
-        providerIdHidden.value = providerid;
-        providerIdSelect.value = providerid;
-        providerIdSelect.disabled = true;
-        contactIdHidden.value = contactid;
-        contactNameText.value = contactname;
-        contactPhoneText.value = contactphone;
-        
-        if(contactstate == 1){
-            contactStateCheck.setAttribute("checked","true");
-        }
-        else{
-            contactStateCheck.removeAttribute("checked");
-        }
-    }
 
 function abrirDialogoProduct(productid,productname,productstate){
         var tipo = document.getElementById("tipo");
@@ -151,82 +118,14 @@ function abrirDialogoProduct(productid,productname,productstate){
 }
 
 
-function abrirDialogoDepartment(departmentid,departmentname,departmentstate){
-        var tipo = document.getElementById("tipo");
-        tipo.value = "editar";
-        
-        var departmentIdHidden = document.getElementById("departmentid");
-        var departmentNameText = document.getElementById("departmentname");
-        var departmentStateCheck = document.getElementById("departmentstate");
-        
-        departmentIdHidden.value = departmentid;
-        departmentNameText.value = departmentname;
-        
-        if(departmentstate == 1){
-            departmentStateCheck.setAttribute("checked","true");
-        }
-        else{
-            departmentStateCheck.removeAttribute("checked");
-        }
-}
-
-function abrirDialogoType(typeid,typename,typestate){
-        var tipo = document.getElementById("tipo");
-        tipo.value = "editar";
-        
-        var typeIdHidden = document.getElementById("typeid");
-        var typeNameText = document.getElementById("typename");
-        var typeStateCheck = document.getElementById("typestate");
-        
-        typeIdHidden.value = typeid;
-        typeNameText.value = typename;
-        
-        if(typestate == 1){
-            typeStateCheck.setAttribute("checked","true");
-        }
-        else{
-            typeStateCheck.removeAttribute("checked");
-        }
-}
-
-function abrirDialogoSeller(sellerid,sellername,sellerstate){
-        var tipo = document.getElementById("tipo");
-        tipo.value = "editar";
-        
-        var sellerIdHidden = document.getElementById("sellerid");
-        var sellerNameText = document.getElementById("sellername");
-        var sellerStateCheck = document.getElementById("sellerstate");
-        
-        sellerIdHidden.value = sellerid;
-        sellerNameText.value = sellername;
-        
-        if(sellerstate == 1){
-            sellerStateCheck.setAttribute("checked","true");
-        }
-        else{
-            sellerStateCheck.removeAttribute("checked");
-        }
-}
 
 
-function abrirDialogo(providerid,providername,providerstate){
-        var tipo = document.getElementById("tipo");
-        tipo.value = "editar";
-        
-        var providerIdHidden = document.getElementById("providerid");
-        var providerNameText = document.getElementById("providername");
-        var providerStateCheck = document.getElementById("providerstate");
-        
-        providerIdHidden.value = providerid;
-        providerNameText.value = providername;
-        
-        if(providerstate == 1){
-            providerStateCheck.setAttribute("checked","true");
-        }
-        else{
-            providerStateCheck.removeAttribute("checked");
-        }
-}
+
+
+
+
+
+
 
     function resetForm(){
         var form = document.getElementById("form");
@@ -269,9 +168,4 @@ function abrirDialogo(providerid,providername,providerstate){
         for (var i = 0; i < formularios.length; i++) {
             formularios[i].required = true;
         }
-        
-        /*for (var i = 0; i < formularios.length; i++) {
-        
-            formularios[i].addEventListener("invalid",validar,false);
-        }*/
     }
