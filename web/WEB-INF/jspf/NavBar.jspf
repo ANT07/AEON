@@ -23,8 +23,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <script src="${pageContext.request.contextPath}/Javascript/javascript.js"></script>
-
-
         <style>
             body{
                 padding-top: 90px;
@@ -38,7 +36,7 @@
             ServiciosSubMenu serviciosSubMenu = new ServiciosSubMenu();
             Usuario usuario = (Usuario) session.getAttribute("user");
             List<Menu> menus = serviciosMenu.obtenerMenuByRoll(
-                    usuario.getRoll().getRollId());
+                    usuario.getRoll());
         %>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -50,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">ALMACEN PACIFICO</a>
+                    <a class="navbar-brand" href="#">AEON</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,17 +61,18 @@
                             <ul class="dropdown-menu">
                                 <%
                                     List<SubMenu> submenus = serviciosSubMenu.obtenerSubmenuByMenuByRoll(
-                                            menu.getMenuId(),usuario.getRoll().getRollId());
+                                            menu.getMenuId(),
+                                            usuario.getRoll());
                                     for (SubMenu submenu : submenus) {
                                 %>
-                                <li><a href="<%=request.getContextPath()+submenu.getUrl()%>"><%=submenu.getSubmenuName()%></a></li>
-                                <%}%>
+                                <li><a href="<%=request.getContextPath() + submenu.getUrl()%>"><%=submenu.getSubmenuName()%></a></li>
+                                    <%}%>
                             </ul>
                         </li>
                         <%}%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="ServletInicioSesion?accion=salir"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+                        <li><a href="sesion.do?accion=salir"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -1,0 +1,19 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="well well-sm col-xs-6 col-sm-4 col-md-3 col-lg-2" style="margin-left: 5px;
+                 margin-right:  5px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            ${producto.nombreproducto}
+        </div>
+        <div class="panel-body">
+            <form>
+                <input type="hidden" name="porductoId" value="${producto.idproducto}">
+                <label class="label label-default">${producto.nombreproducto}</label>
+            </form>
+            <div style="margin-top: 10px;">
+                <button class="btn btn-sm btn-primary " onclick="cambiarContenido(this)"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+            </div>
+        </div> 
+    </div>
+</div>
