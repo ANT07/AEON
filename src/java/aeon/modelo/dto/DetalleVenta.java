@@ -101,8 +101,8 @@ public class DetalleVenta  implements java.io.Serializable {
         if (this.producto != other.producto) {
             return false;
         }
-        this.setCantidad(this.cantidad + other.getCantidad());
-        this.setTotaldetalle(this.cantidad* this.getPrecio());
+        other.setCantidad(other.cantidad + this.getCantidad());
+        other.setTotaldetalle(other.cantidad* other.getPrecio());
         return true;
     }
 
