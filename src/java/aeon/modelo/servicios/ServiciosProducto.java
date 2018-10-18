@@ -24,8 +24,8 @@ public class ServiciosProducto {
         Conexion conexion = null;
         try {
             conexion = new Conexion();
-            String sql = "INSERT INTO `producto`( `IDCATEGORIA`, `NOMBREPRODUCTO`, `EXISTENCIA`, `DESCRIPCION`, `ESTADOPRODUCTO`) "
-                    + "VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO `producto`( `IDCATEGORIA`, `NOMBREPRODUCTO`, `EXISTENCIA`, `DESCRIPCION`, `ESTADOPRODUCTO`,'PRECIO') "
+                    + "VALUES (?,?,?,?,?,?)";
             PreparedStatement consulta = conexion.getConexion().prepareStatement(
                     sql);
             consulta.setInt(1,
@@ -38,6 +38,9 @@ public class ServiciosProducto {
                     producto.getDescripcion());
             consulta.setInt(5,
                     producto.getEstadoproducto());
+            consulta.executeUpdate();
+            consulta.setDouble(6,
+                    producto.getPrecio());
             consulta.executeUpdate();
         } finally {
             if (conexion != null && conexion.getConexion() != null) {
@@ -74,6 +77,7 @@ public class ServiciosProducto {
                     + "`NOMBREPRODUCTO`= ?,"
                     + "`EXISTENCIA`= ?,"
                     + "`DESCRIPCION`= ?,"
+                     + "`PRECIO`= ?,"
                     + "`ESTADOPRODUCTO`= ? WHERE `IDPRODUCTO` = ?";
             PreparedStatement consulta = conexion.getConexion().prepareStatement(
                     sql);
@@ -87,8 +91,9 @@ public class ServiciosProducto {
                     producto.getDescripcion());
             consulta.setInt(5,
                     producto.getEstadoproducto());
-            consulta.executeUpdate();
-            consulta.setInt(6,
+             consulta.setDouble(6,
+                    producto.getPrecio());
+            consulta.setInt(7,
                     producto.getIdproducto());
             consulta.executeUpdate();
         } finally {
@@ -115,6 +120,7 @@ public class ServiciosProducto {
                 producto.setExistencia(resultado.getFloat("EXISTENCIA"));
                 producto.setNombreproducto(resultado.getString("NOMBREPRODUCTO"));
                 producto.setIdcategoria(resultado.getInt("IDCATEGORIA"));
+                producto.setPrecio(resultado.getDouble("PRECIO"));
                 productos.add(producto);
             }
         } finally {
@@ -135,7 +141,7 @@ public class ServiciosProducto {
             PreparedStatement consulta = conexion.getConexion().prepareStatement(
                     sql);
             consulta.setInt(1,
-                    producto.getIdproducto());
+                    id);
             ResultSet resultado = consulta.executeQuery();
             while (resultado.next()) {
                 producto = new Producto();
@@ -145,6 +151,7 @@ public class ServiciosProducto {
                 producto.setExistencia(resultado.getFloat("EXISTENCIA"));
                 producto.setNombreproducto(resultado.getString("NOMBREPRODUCTO"));
                 producto.setIdcategoria(resultado.getInt("IDCATEGORIA"));
+                producto.setPrecio(resultado.getDouble("PRECIO"));
 
             }
         } finally {

@@ -35,26 +35,25 @@
         </style>
     </head>
     <body>
-${NoPermiso}
+        ${NoPermiso}
         <div class="container well" id="ContainerLogin">
-            
+
             <center><img src="image/ic_login.jpg" alt="" class="img-circle"/></center>
-            
+
             <form action="sesion.do" method="post" id="FormLogin">
-            <div class="form-group">
-                <input type="hidden" name="accion" value="entrar">
+                <div class="form-group">
+                    <input type="hidden" name="accion" value="entrar">
                     <p  class="alert alert-danger" style="color:#ff0000;<c:if var="prueba" test="${mensaje == null}" > display: none; </c:if>">${mensaje}</p> 
                     <label for="usuario">Nombre de usuario</label>
                     <input type="text" class="form-control"  id="usuario" placeholder="Usuario" name="usuario" required>
-            </div>
-            <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control"  id="password" placeholder="Contraseña" name="password" required>
-            </div>
-                    <button type="submit" class="btn btn-primary" id="btnIngresar">Iniciar sesión</button><br><br>
-<!--                    <center><a href="Registro.jsp" >No tengo un usuario</a></center>-->
-          </form>
-
-           </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btnIngresar">Iniciar sesión</button><br><br>
+                <!--                    <center><a href="Registro.jsp" >No tengo un usuario</a></center>-->
+            </form>
+        </div>
     </body>
 </html>

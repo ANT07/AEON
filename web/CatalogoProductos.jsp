@@ -14,6 +14,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+
+        </style>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -36,11 +39,14 @@
                     productos);
         %>
         <div class="container">
-            <div>
-                <a href="#" class="btn btn-primary">
-                    Mi Carrito <span class="badge">${carrito.size()}</span>
-                </a>
+            <div class="row" style="margin-bottom: 5px">
+                <div class="col-xs-12">
+                    <a href="#" class="btn btn-primary">
+                        Mi Carrito <span class="badge">${carrito.size()}</span>
+                    </a>
+                </div>
             </div>
+
             <div class="row">
                 <c:forEach var="producto" items="${productos}">
                     <%@include file="WEB-INF/jspf/UnidadProducto.jspf" %>
@@ -50,24 +56,27 @@
 
     </body>
     <script>
-        function cambiarContenido(element, id) {
-            var parent = element.parentNode;
-            var contenido = "<input type='number' min='1' max='50' value='1' form='carrito" + id + "' name='cantidadProducto' class='form-control input-sm' ><br>";
-            contenido += '<div class="btn-group">';
-            contenido += '<button  form="carrito' + id + '" class="btn btn-sm btn-success" type="submit" ><span class="glyphicon glyphicon-shopping-cart"></span></button>';
-            contenido += '<button   class="btn btn-sm btn-danger" type="button" ><span class="">x</span></button>';
-            contenido += '</div>';
-            parent.innerHTML = contenido;
-
-            setTimeout(function () {
-                explode(parent, id);
-            }, 5000);
-        }
-
-        function explode(parent, id) {
-            var contenido = '<button class="btn btn-sm btn-primary " onclick="cambiarContenido(this,' + id + ')"><span class="glyphicon glyphicon-shopping-cart"></span></button>';
-            parent.innerHTML = contenido;
-        }
+//        function cambiarContenido(element, id) {
+//            var parent = element.parentNode.parentNode;
+//            var contenido = "<div class='col-xs-8' >"
+//            contenido += "<input type='number' min='1' max='50' value='1' form='carrito" + id + "' name='cantidadProducto' class='form-control input-sm'><br>";
+//            contenido += '</div>';
+//            contenido += '<div class="col-xs-4">';
+//            contenido += '<button  form="carrito' + id + '" class="btn btn-sm btn-success" type="submit" ><span class="glyphicon glyphicon-shopping-cart"></span></button>';
+//            contenido += '</div>';
+//            parent.innerHTML = contenido;
+//
+//            setTimeout(function () {
+//                explode(parent, id);
+//            }, 5000);
+//        }
+//
+//        function explode(parent, id) {
+//            var contenido = "<div class='col-xs-12'>";
+//                    contenido += '<button class="btn btn-sm btn-primary " onclick="cambiarContenido(this,' + id + ')"><span class="glyphicon glyphicon-shopping-cart"></span></button>';
+//                    contenido += "</div>";
+//            parent.innerHTML = contenido;
+//        }
     </script>
 
 </html>
