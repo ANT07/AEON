@@ -24,6 +24,7 @@
         <servlet-name>MenuServlet</servlet-name>
         <url-pattern>/menu.do</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>SubmenuServlet</servlet-name>
         <servlet-class>aeon.controlador.servlet.SubmenuServlet</servlet-class>
@@ -67,6 +68,14 @@
     <servlet-mapping>
         <servlet-name>AnadirCarrito</servlet-name>
         <url-pattern>/anadircarrito.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>aeon.controlador.servlet.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/producto.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>

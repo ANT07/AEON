@@ -18,6 +18,7 @@ public class Producto  implements java.io.Serializable {
      private String descripcion;
      private Integer estadoproducto;
      private double precio; 
+     private String pathImage;
 
     public Producto() {
     }
@@ -77,6 +78,14 @@ public class Producto  implements java.io.Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
     }
 
 
