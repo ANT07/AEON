@@ -24,8 +24,8 @@ public class ServiciosProducto {
         Conexion conexion = null;
         try {
             conexion = new Conexion();
-            String sql = "INSERT INTO `producto`( `IDCATEGORIA`, `NOMBREPRODUCTO`, `EXISTENCIA`, `DESCRIPCION`, `ESTADOPRODUCTO`,'PRECIO') "
-                    + "VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO `producto`( `IDCATEGORIA`, `NOMBREPRODUCTO`, `EXISTENCIA`, `DESCRIPCION`, `ESTADOPRODUCTO`,'PRECIO','IMAGEN') "
+                    + "VALUES (?,?,?,?,?,?,?)";
             PreparedStatement consulta = conexion.getConexion().prepareStatement(
                     sql);
             consulta.setInt(1,
@@ -40,6 +40,8 @@ public class ServiciosProducto {
                     producto.getEstadoproducto());
             consulta.executeUpdate();
             consulta.setDouble(6,
+                    producto.getPrecio());
+            consulta.setDouble(7,
                     producto.getPrecio());
             consulta.executeUpdate();
         } finally {

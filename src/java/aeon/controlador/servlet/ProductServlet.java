@@ -90,9 +90,11 @@ public class ProductServlet extends HttpServlet {
         try {
             String tipo = request.getParameter("tipo");
             String productoname = request.getParameter("productoname");
+            String descripcion = request.getParameter("descripcion");
             double precioProducto = Double.parseDouble(request.getParameter("precioProducto"));
-
             int productostate = request.getParameter("productostate") != null ? 1 : 0;
+            int categoria = Integer.parseInt(request.getParameter("categoria"));
+            int existencia = Integer.parseInt(request.getParameter("existencia"));
 
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(
                     "/ProductoView.jsp");
@@ -102,6 +104,9 @@ public class ProductServlet extends HttpServlet {
 
             producto.setNombreproducto(productoname);
             producto.setEstadoproducto(productostate);
+            producto.setExistencia(existencia);
+            producto.setIdcategoria(categoria);
+            producto.setDescripcion(descripcion);
 
             /////////////////////////
             FileItemFactory factory = new DiskFileItemFactory();
@@ -142,6 +147,7 @@ public class ProductServlet extends HttpServlet {
             requestDispatcher.forward(request,
                     response);
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }

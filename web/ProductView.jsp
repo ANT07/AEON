@@ -35,7 +35,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Productos</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="ProductServlet" method="post" id="form" >
+                                <form action="producto.do" method="post" id="form" >
                                     <input name="tipo" id="tipo" value="guardar" type="hidden">
                                     <div class="form-group">
                                         <img id="imagen" class="img-responsive img-rounded center-block" src="${pageContext.request.contextPath}/images/images.jpg" style="width: 200px !important; height: 200px !important;">
@@ -54,73 +54,85 @@
                                         <input name="categoria" id="categoria" type="text" class="form-control" onkeypress="">
                                     </div>
                                     <div class="form-group">
+                                        <label>Existencia: </label>
+                                        <input name="existencia" id="existencia" type="text" class="form-control" onkeypress="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Descripcion: </label>
+                                        <textarea class="form-control" rows="6" name="descripcion" id="descripcion">
+                                    
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="checkbox-inline">
                                             <input name="produtcstate" id="produtcstate" type="checkbox" value="Activo">Activo
                                         </label>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-warning" form="form" >Guardar</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-warning" form="form" >Guardar</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 col-md-offset-2">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#myModal" onclick="resetForm(), habilitarText()">
-                        <span class="glyphicon glyphicon-plus"></span> Nuevo Producto
-                    </button><br><br>
-                    <div class="table-responsive" id="tableCont">
-                        <table  class="table table-hover table-striped table-condensed">
-                            <tr class="warning">
-                                <th>Codigo</th>
-                                <th>Nombre Producto</th>
-                                <th>Categoria</th>
-                                <th>Precio</th>
-                                <th>Existencia</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                            <c:forEach items="${produtcList}" var="produtc">
-                                <tr>
-                                    <td>${produtc.idproducto}</td>
-                                    <td>${produtc.nombreproducto}</td>
-                                    <td>${produtc.idcategoria}</td>
-                                    <td>${produtc.precio}</td>
-                                    <td>${produtc.existencia}</td>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#myModal" onclick="resetForm(), habilitarText()">
+                    <span class="glyphicon glyphicon-plus"></span> Nuevo Producto
+                </button><br><br>
+                <div class="table-responsive" id="tableCont">
+                    <table  class="table table-hover table-striped table-condensed">
+                        <tr class="warning">
+                            <th>Codigo</th>
+                            <th>Nombre Producto</th>
+                            <th>Categoria</th>
+                            <th>Precio</th>
+                            <th>Existencia</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <c:forEach items="${produtcList}" var="produtc">
+                            <tr>
+                                <td>${produtc.idproducto}</td>
+                                <td>${produtc.nombreproducto}</td>
+                                <td>${produtc.idcategoria}</td>
+                                <td>${produtc.precio}</td>
+                                <td>${produtc.existencia}</td>
 
+                                <td>
+                                    <c:if test="${produtc.estadoproducto == 1}">Activo</c:if>
+                                    <c:if test="${produtc.estadoproducto == 0}">Inactivo</c:if>
+                                    </td>
                                     <td>
-                                        <c:if test="${produtc.estadoproducto == 1}">Activo</c:if>
-                                        <c:if test="${produtc.estadoproducto == 0}">Inactivo</c:if>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#myModal" onclick="abrirDialogoProduct()">
+                                        <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#myModal" onclick="abrirDialogoProduct()">
                                             <span class="glyphicon glyphicon-edit"></span> Editar
                                         </button>
                                     </td>
                                 </tr>
-                            </c:forEach>
-                        </table>
-                    </div>
+                        </c:forEach>
+                    </table>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
 <script>
-    function cambiarImagen(elemet){
+    function cambiarImagen(elemet) {
         var file = elemet.files[0];
         var reader = new FileReader();
-        
-        reader.readAsDataURL(file); 
-        reader.onload = function (e){
+
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
             cargar(e);
         };
     }
-    
-    function cargar(e){
+
+    function cargar(e) {
         var img = document.getElementById("imagen");
         img.src = e.target.result;
     }

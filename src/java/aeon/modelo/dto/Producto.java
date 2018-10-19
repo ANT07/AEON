@@ -14,7 +14,7 @@ public class Producto  implements java.io.Serializable {
      private int idproducto;
      private Integer idcategoria;
      private String nombreproducto;
-     private Float existencia;
+     private double existencia;
      private String descripcion;
      private Integer estadoproducto;
      private double precio; 
@@ -50,11 +50,11 @@ public class Producto  implements java.io.Serializable {
     public void setNombreproducto(String nombreproducto) {
         this.nombreproducto = nombreproducto;
     }
-    public Float getExistencia() {
+    public double getExistencia() {
         return this.existencia;
     }
     
-    public void setExistencia(Float existencia) {
+    public void setExistencia(double existencia) {
         this.existencia = existencia;
     }
     public String getDescripcion() {
